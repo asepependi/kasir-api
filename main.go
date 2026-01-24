@@ -38,7 +38,7 @@ func main() {
 		AllowCredentials: true,
 	}))
 
-	router.GET("/health", func(c *gin.Context) {
+	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "OK",
 			"message": "Kasir API is running",
