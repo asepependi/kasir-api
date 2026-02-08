@@ -61,16 +61,16 @@ func (h *CategoryHandler) GetByID(c *gin.Context) {
 	idInt, err := strconv.Atoi(id)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Invalid product ID",
+			"error": "Invalid category ID",
 		})
 		return
 	}
 
-	product, err := h.service.GetByID(idInt)
+	category, err := h.service.GetByID(idInt)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			c.JSON(http.StatusNotFound, gin.H{
-				"error": "Product not found",
+				"error": "Category not found",
 			})
 			return
 		}
@@ -80,7 +80,7 @@ func (h *CategoryHandler) GetByID(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, product)
+	c.JSON(http.StatusOK, category)
 }
 
 func (h *CategoryHandler) Update(c *gin.Context) {
